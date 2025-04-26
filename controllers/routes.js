@@ -1,4 +1,4 @@
 export const getName = (req, res) => {
-    const name = 'Chalese Flamm Tavarez';
+    const name = 'Chalese Tavarez';
     res.send(name);
 };
