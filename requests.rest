@@ -1,0 +1,9 @@
+### Get all contacts from your server
+GET http://localhost:3000/contacts
+Content-Type: application/json
+
+###
+
+### Get one contact by ID
+GET http://localhost:3000/contacts/contact?id=68151b9abc625ee02141f7c9
+Content-Type: application/json

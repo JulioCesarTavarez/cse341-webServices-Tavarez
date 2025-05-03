@@ -1,14 +1,17 @@
 {
   "name": "cse341-webservices-tavarez",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.14.1"
   },
-"type": "module",
-"scripts": {
-  "dev": "nodemon --env-file=.env server.js",
-  "start": "node server.js"
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --env-file=.env server.js",
+    "start": "node server.js"
   },
-"devDependencies": {
+  "devDependencies": {
     "nodemon": "^3.1.10"
   }
 }
