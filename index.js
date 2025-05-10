@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const { getContacts, } = require('./controllers/contact.js')
+const contactRoutes = require('./routes/routes.js');
+const { getContacts, createContact, updateContact, deleteContact} = require('./controllers/contact.js')
 const mongoose = require("mongoose");
 
 // import { getName } from './routes/routes.js';
@@ -21,7 +22,9 @@ db.once("open", () => console.log("Connected to database"));
 
 // contacts
 app.get('/contacts', getContacts);
-
+app.use('/', contactRoutes);
+app.put('/contacts/:id', updateContact);     // PUT route
+app.delete('/contacts/:id', deleteContact);  // DELETE route
 // handle not found
 app.use((req, res) => {
   res.status(404).send("Page not found");
