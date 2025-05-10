@@ -1,26 +1,72 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+const Contacts = require("../models/contact.js")
 
-dotenv.config();
+// GET /contacts -> Get all contacts
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Connected to MongoDB!'))
-.catch(err => console.error('Connection error:', err));
+const getContacts = async (req, res) => {
+  try {
+    const contacts = await Contacts.find();
+    res.json(contacts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 
-const contactSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  favoriteColor: String,
-  birthday: Date
-});
+module.exports = {
+  getContacts: getContacts,
+}
 
-const Contact = mongoose.model('Contact', contactSchema);
+// GET /contacts/:id -> Get a single contact by ID
+// router.get('/:id', async (req, res) => {
+//   try {
+//       const contact = await Contact.findById(req.params.id);
+//       if (!contact) {
+//           return res.status(404).json({ message: "Contact not found" });
+//       }
+//       res.status(200).json(contact);
+//   } catch (err) {
+//       res.status(500).json({ message: err.message });
+//   }
+// });
 
-// const user = new User({   firstName: 'Richard', lastName: 'Grayson', email: 'Nightwing@batman.com', favoriteColor: 'Blue', birthday: '1989-01-01' });
-// await user.save(); // Adds user to MongoDB
+// GET / -> Get name
+// export const getName = (req, res) => {
+//   const name = 'Chalese Tavarez';
+//   res.send(name);
+// };
 
-export default Contact;
+// export default router;
+
+// import mongoose from 'mongoose';
+// import dotenv from 'dotenv';
+
+// dotenv.config();
+
+
+// const contactSchema = new mongoose.Schema({
+//   firstName: String,
+//   lastName: String,
+//   email: String,
+//   favoriteColor: String,
+//   birthday: Date
+// });
+
+// const Contact = mongoose.model('Contact', contactSchema);
+
+
+// async function dbconection(){
+//   try {
+//     await mongoose.connect(process.env.MONGO_URL, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+//     });
+//     console.log('Connected to MongoDB');
+//   } catch(err){
+//     console.log(err);
+//   }
+// }
+
+// await dbconection();
+
+
+
+// export default Contact;
