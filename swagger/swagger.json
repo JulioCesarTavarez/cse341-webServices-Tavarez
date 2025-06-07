@@ -42,8 +42,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": { "type": "string" },
-                  "phone": { "type": "string" }
+                  "firstName": { "type": "batman" },
+                  "lastName": { "type": "Wayne" },
+                  "email": { "type": "tavarez@cs.washington.edu" },
+                  "favoritColor": { "type": "Blue" },
+                  "birthday": { "type": "1995-06-15" }
+
                 }
               }
             }
