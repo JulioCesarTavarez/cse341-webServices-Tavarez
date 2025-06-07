@@ -11,6 +11,28 @@ const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 
+
+// Swagger setup
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Contacts API',
+      version: '1.0.0',
+      description: 'API for managing contacts',
+    },
+    servers: [
+      {
+        url: process.env.RENDER_URL || 'http://localhost:3000',
+      },
+    ],
+  },
+  apis: ['./routes/*.js'], // adjust if your docs are in other files
+};
+
+const swaggerSpec = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // connection db
 mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
