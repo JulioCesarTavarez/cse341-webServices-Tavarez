@@ -42,7 +42,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "firstName": { "type": "batman" },
+                  "firstName": { "type": "strng" },
                   "lastName": { "type": "Wayne" },
                   "email": { "type": "tavarez@cs.washington.edu" },
                   "favoritColor": { "type": "Blue" },
