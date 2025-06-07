@@ -3,6 +3,8 @@ const express = require('express');
 const contactRoutes = require('./routes/routes.js');
 const { getContacts, createContact, updateContact, deleteContact} = require('./controllers/contact.js')
 const mongoose = require("mongoose");
+const cors = require('cors');
+
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger/swagger.json');
@@ -12,6 +14,7 @@ const swaggerDocument = require('./swagger/swagger.json');
 // Create an instance of an Express application
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // connection db
